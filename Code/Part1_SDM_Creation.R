@@ -33,12 +33,12 @@ library(terra)
 
 #==============================================================================
 
-#   Section 1: Obtaining and Formatting Occurence / Climate Data 
+#   Section 1: Obtaining and Formatting Occurrence / Climate Data 
 #
-#   Whitney has CSV for you. 
-#   To add this to R: In the right upper terminal click import data set,
-#   then "from text base" then find the CSV and upload. 
-#   The csv should be called "Occidentalis_data" 
+# Download the occidentalis_data file from the "data" folder on the github 
+# Add this file to the environment by selecting "import dataset" in the top right Environment box
+# Select "from text (base)" then find the .csv file in your downloads 
+# Make sure "heading" is selected to YES when adding! 
 
 #==============================================================================
 
