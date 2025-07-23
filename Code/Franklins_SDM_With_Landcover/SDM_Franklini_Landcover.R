@@ -23,6 +23,7 @@ franklini_occur <- vect(shapefile_path)
 #==============================================================================
 # List .tif files and load them as SpatRaster (not raster::stack)
 # Load climate layers as SpatRaster
+# don't forget to CHANGE PATH (and make sure you have climate data downloaded, check data folder!)
 climList <- list.files(
   path = "/Users/whitneymaxfield/Desktop/Bee_SDMs/Westerns_past&future_oregon2/climate/wc2.1_2.5m",
   pattern = ".tif$",
@@ -31,6 +32,8 @@ climList <- list.files(
 clim <- rast(climList)  # Multi-layer SpatRaster
 
 # Load and resample landcover
+# Download NLCD landcover from git Data folder 
+# CHANGE PATH 
 landcover <- rast("/Users/whitneymaxfield/Downloads/Annual_NLCD_LndCov_1998_CU_C1V1/Annual_NLCD_LndCov_1998_CU_C1V1.tif")
 landcover <- resample(landcover, clim[[1]], method = "near")
 
