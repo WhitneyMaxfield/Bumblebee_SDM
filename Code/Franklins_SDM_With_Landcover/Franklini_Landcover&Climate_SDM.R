@@ -1,4 +1,4 @@
-install.packages(c("sf", "FedData")
+install.packages(c("sf", "FedData"))
                  
 # Load packages
 library(terra)
@@ -42,7 +42,7 @@ nlcd_1998_path <- "/Users/whitneymaxfield/Downloads/Annual_NLCD_LndCov_1998_CU_C
                  
 # Read the raster using terra
 nlcd_1998 <- rast(nlcd_1998_path)
-                 
+
 # Project to a common CRS if needed
 # If your climate rasters are in a different projection (e.g., EPSG:4326), reproject the NLCD
 # Optional (only if misaligned): 
@@ -58,7 +58,7 @@ or_ca_vect <- vect(or_ca_combined)
 
 # Crop and mask (this can take a bit)
 landcover_clipped <- crop(nlcd_1998, or_ca_vect)
-landcover_clipped <- mask(nlcd_1998, or_ca_vect)
+landcover_masked <- mask(landcover_clipped, or_ca_vect)
 
 # Define classes that correspond to floral-rich, open habitats:
 # (e.g., 52 = Shrubland, 71 = Grassland/Herbaceous, 81 = Pasture/Hay)
@@ -73,7 +73,7 @@ rcl <- matrix(c(
 82, 100, 0
 ), ncol = 3, byrow = TRUE)
                  
-floral_layer <- classify(landcover_clipped, rcl)
+floral_layer <- classify(landcover_masked, rcl)
                  
 # ----------------------------------------
 # 4. Plot to check
@@ -110,7 +110,7 @@ crs(floral_resampled)
 #flora is wrong crs so convert: 
 crs_clim <- crs(clim_raster_spat)
 # Reproject floral raster to match climate raster CRS
-floral_reprojected <- project(floral_layer, crs_clim)
+floral_reprojected <- project(floral_layer, crs(clim_raster_spat), method = "near")
                  
 #extents dont match (floral has to be clipped due to MRLC constraints)
 #Have to resample: Resampling aligns all pixels to the climate raster grid, so each cell corresponds spatially.
@@ -118,6 +118,7 @@ floral_reprojected <- project(floral_layer, crs_clim)
 floral_resampled <- resample(floral_reprojected, clim_raster_spat, method = "near")
 
 # Combine into one stack
+env_stack <- c(floral_resampled, clim_raster_spat)
 # Reproject vector to match raster CRS
 or_ca_vect <- project(or_ca_vect, crs(env_stack))
 
@@ -221,7 +222,7 @@ suitability_raster <- terra::predict(env_stack_filtered, maxnet_model, type = "c
 # Plot suitability
 plot(suitability_raster, main = "MaxNet Habitat Suitability for Franklin's Bumblebee")
 writeRaster(suitability_raster, 
-            filename = "/Users/whitneymaxfield/Desktop/Bee_SDMs/franklins+floral/Franklin_SDM_prediction_Oregon.tif", 
+            filename = "/Users/whitneymaxfield/Desktop/Franklins_attempt_2_withLC.tif", 
             overwrite = TRUE)
 suit_df <- as.data.frame(suitability_raster, xy = TRUE, na.rm = TRUE)
 colnames(suit_df)[3] <- "suitability"
@@ -282,6 +283,6 @@ ggplot() +
   theme_minimal() +
   labs(title = "Franklin's Bumblebee Habitat Suitability with State Boundaries")
 
-# Save as GeoTIFF (Oregon only)
-output_path <- "/Users/whitneymaxfield/Desktop/Bee_SDMs/Franklins_Prediciton_withLandCover.tif"
-writeRaster(occpredictplot, filename = output_path, overwrite = TRUE)
+# Save as GeoTIFF
+output_path <- "/Users/whitneymaxfield/Desktop/Franklins_withLC_final2.tif"
+writeRaster(suitability_raster, filename = output_path, overwrite = TRUE)
