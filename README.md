@@ -4,6 +4,8 @@ This repository contains species distribution models (SDMs) for several bumblebe
 
 This project is a collaboration between **Lewis & Clark College** and the **U.S. Fish and Wildlife Service (USFWS)** in Oregon. All modeling and analysis were conducted using **R**, with map visualizations produced in **QGIS**.
 
+![Image](https://github.com/user-attachments/assets/cd42fe79-097d-4ba4-ac5b-7f58aed68d57)
+
 ## Contents
 * __Species Distribution Models__
   SDMs were created using historical and future climate data, land cover, and occurrence records for multiple bumblebee species. These models help assess current and projected suitable   habitat, with a focus on the historical range of *Bombus franklini*.
