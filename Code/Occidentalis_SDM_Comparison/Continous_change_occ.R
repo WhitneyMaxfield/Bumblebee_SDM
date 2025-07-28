@@ -38,9 +38,12 @@ tm_shape(change_class) +
   tm_layout(title = "Change in Habitat Suitability for *Bombus occidentalis*",
             legend.outside = TRUE)
 
-output_path <- "/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Code/suitability_change_Occ_classified.tif"
-writeRaster(change_class, filename = output_path, overwrite = TRUE)
+#output_path <- "/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Code/suitability_change_Occ_classified.tif"
+#writeRaster(change_class, filename = output_path, overwrite = TRUE)
 
+####################################################
+# conitnous now
+####################################################
 # Plot the raw suitability change with a diverging color palette
 library(RColorBrewer)
 
@@ -64,5 +67,5 @@ tm_shape(suitability_change) +
              position = c("center", "BOTTOM"), size = 0.7)
 
 output_path <- "/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Code/suitability_change_Occ_continuous.tif"
-writeRaster(change_class, filename = output_path, overwrite = TRUE)
+writeRaster(suitability_change, filename = output_path, overwrite = TRUE)
 
