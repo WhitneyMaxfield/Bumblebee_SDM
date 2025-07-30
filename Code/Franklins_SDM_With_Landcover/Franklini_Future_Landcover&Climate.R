@@ -327,7 +327,7 @@ ggplot() +
   coord_sf(crs = raster_crs, expand = FALSE) +
   theme_minimal() +
   labs(title = "Franklin's Bumblebee Habitat Suitability with State Boundaries")
-
+ 
 # Save as GeoTIFF
 output_path <- "/Users/whitneymaxfield/Desktop/Future_Franklins_LC.tif"
 writeRaster(suitability_raster, filename = output_path, overwrite = TRUE)
