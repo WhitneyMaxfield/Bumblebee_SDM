@@ -94,7 +94,7 @@ colnames(backgroundPoints) <- c("longitude", "latitude")
 
 #==============================================================================
 #
-#    Section 3: Collate Env Data and Point Data into Proper Model Formats
+#    Section 3: Collect Env Data and Point Data into Proper Model Formats
 #   Data for observation sites (presence and background), with climate data
 #
 #==============================================================================
