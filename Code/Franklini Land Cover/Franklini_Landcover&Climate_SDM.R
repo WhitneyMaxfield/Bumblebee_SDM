@@ -109,6 +109,12 @@ vif_result <- vifstep(env_df, th = 10)
 selected_vars <- vif_result@results$Variables
 env_stack_filtered <- env_stack[[selected_vars]]
 
+#variables retained: 
+print(vif_result)
+
+#variables removed:
+print(vif_result@excluded)
+
 # ----------------------------------------
 # 7. SDM with maxnet
 # ----------------------------------------
