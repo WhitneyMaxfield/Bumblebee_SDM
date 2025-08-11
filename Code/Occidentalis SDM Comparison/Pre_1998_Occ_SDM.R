@@ -24,7 +24,7 @@ library(terra)
 range_shp <- vect("/Users/whitneymaxfield/Downloads/redlist_species_data_26b44e70-1fb1-4d20-91ab-3d384a808d87")
 
 # Step 2: Convert your tabular data to spatial points
-# Use the pre-1998 data
+# Use the pre-1998 data (CSV)
 occ_data_pre_1998 <- pre1998_occ_occur
 
 # Convert to SpatVector
@@ -195,3 +195,12 @@ ggplot() +
 # Save as GeoTIFF (Oregon only)
 output_path <- "/Users/whitneymaxfield/Desktop/Bee_SDMs/Westerns_past&future_oregon2/Occidentalis_<1998prediction_Oregon_geofixed.tif"
 writeRaster(occpredictplot, filename = output_path, overwrite = TRUE)
+
+# Save presence and background points for later threshold calculation in mapping script
+write.csv(OccDataNotCoords, 
+          "/Users/whitneymaxfield/Desktop/Bee_SDMs/Pre_presence_points.csv", 
+          row.names = FALSE)
+
+write.csv(backgroundPoints, 
+          "/Users/whitneymaxfield/Desktop/Bee_SDMs/Pre_background_points.csv", 
+          row.names = FALSE)
