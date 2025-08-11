@@ -4,8 +4,8 @@ library(tmap)
 library(RColorBrewer)
 
 # --- Step 1: Load historical and current suitability maps ---
-historic <- rast("/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Figures/Pre and Post 1998 Occ Figures/Occidentalis_<1998prediction_Oregon_geofixed.tif")  # Replace with your file
-current  <- rast("/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Figures/Pre and Post 1998 Occ Figures/Occidentalis_post1998prediction_Oregon.tif")   # Replace with your file
+historic <- rast("/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Figures/Pre and Post 1998 Occidentalis/Occidentalis_<1998prediction_Oregon_geofixed.tif") 
+current  <- rast("/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Figures/Pre and Post 1998 Occidentalis/Occidentalis_post1998prediction_Oregon.tif") 
 
 # --- Step 2: Resample historic to match current if needed ---
 if (!compareGeom(historic, current, stopOnError = FALSE)) {
@@ -38,7 +38,7 @@ tm_shape(change_class) +
   tm_layout(title = "Change in Habitat Suitability for *Bombus occidentalis*",
             legend.outside = TRUE)
 
-output_path <- "/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Code/suitability_change_Occ_classified.tif"
+output_path <- "/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Figures/Pre and Post 1998 Occidentalis/suitability_change_Occ_classified.tif"
 writeRaster(change_class, filename = output_path, overwrite = TRUE)
 
 
