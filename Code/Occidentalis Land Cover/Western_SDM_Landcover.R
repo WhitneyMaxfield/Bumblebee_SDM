@@ -90,7 +90,7 @@ legend("topright", legend = c("Non-floral", "Open floral habitat"), fill = c("gr
 clim <- worldclim_global(var = "bio", res = 2.5, version = 2.1, path = "/Users/whitneymaxfield/Desktop/Franklini_climate_data_old")
 climList <- list.files(
   path = "/Users/whitneymaxfield/Desktop/Franklini_climate_data_old/climate/wc2.1_2.5m",
-  pattern = ".tif$",
+  pattern = ".tif$
   full.names = TRUE
 )
 
@@ -223,9 +223,9 @@ maxnet_model <- maxnet(p = response, data = predictors_clean, f = maxnet.formula
 suitability_raster <- terra::predict(env_stack_filtered, maxnet_model, type = "cloglog", na.rm = TRUE)
                  
 # Plot suitability
-plot(suitability_raster, main = "MaxNet Habitat Suitability for Franklin's Bumblebee")
+plot(suitability_raster, main = "MaxNet Habitat Suitability for Western Bumblebee")
 writeRaster(suitability_raster, 
-            filename = "/Users/whitneymaxfield/Desktop/Franklins_attempt_2_withLC.tif", 
+            filename = "/Users/whitneymaxfield/Desktop/Western_withLC.tif", 
             overwrite = TRUE)
 suit_df <- as.data.frame(suitability_raster, xy = TRUE, na.rm = TRUE)
 colnames(suit_df)[3] <- "suitability"
@@ -262,7 +262,7 @@ ggplot() +
   scale_fill_viridis_c(option = "plasma") +
   coord_sf(crs = raster_crs, expand = FALSE) +
   theme_minimal() +
-  labs(title = "Franklin's Bumblebee Habitat Suitability in OR + CA")
+  labs(title = "Western Bumblebee Habitat Suitability in OR + CA")
 
 #just state lines: 
 library(tigris)
@@ -284,7 +284,7 @@ ggplot() +
   scale_fill_viridis_c(option = "plasma") +
   coord_sf(crs = raster_crs, expand = FALSE) +
   theme_minimal() +
-  labs(title = "Franklin's Bumblebee Habitat Suitability with State Boundaries")
+  labs(title = "Western Bumblebee Habitat Suitability with State Boundaries")
 
 # Save as GeoTIFF
 output_path <- "/Users/whitneymaxfield/Desktop/Western_2006.tif"
