@@ -1,4 +1,50 @@
-## North American Historical vs. Current Habitat Suitability Analysis
+## Oregon: Western Bumblebee Habitat Before and After Population Decline
+
+<img src="https://github.com/WhitneyMaxfield/Bumblebee_SDM/blob/main/Figures/Pre%20and%20Post%201998%20Occidentalis/Portrait_bothMapsJPEG.jpeg" width="500">
+
+### What This Figure Shows
+
+This figure compares modeled habitat suitability for *Bombus occidentalis* (Western bumblebee) in Oregon across two critical time periods: before and after the species experienced a sharp population decline around 1998. The color gradient represents relative habitat suitability, with dark purple indicating high-quality habitat and light yellow showing areas of low suitability. County boundaries provide spatial reference points across Oregon.
+
+### Our Modeling Approach
+
+We created separate species distribution models for each time period using **MaxEnt** (Maximum Entropy) modeling implemented through the **maxnet** R package. Here's how we built these models:
+
+**Data Preparation:** We filtered occurrence records using IUCN range maps to focus on the species' known geographic range, then split the data into pre-1998 and post-1998 periods. For each time period, we used WorldClim v2.1 bioclimatic variables as environmental predictors.
+
+**Model Training:** We generated pseudo-absence points (background points) within the species' range to create presence-background datasets. The MaxEnt algorithm compared environmental conditions at known occurrence sites with randomly selected background locations to identify suitable habitat conditions.
+
+**Spatial Predictions:** Both models were trained using the same environmental variables and then projected across Oregon's landscape to create continuous habitat suitability maps. We focused specifically on Oregon to examine regional patterns in this ecologically important state.
+
+### What the Results Tell Us
+
+The comparison reveals a dramatic story of habitat change:
+
+**Historic Period (top map):** The model predicts widespread suitable habitat across Oregon, with particularly high suitability in the eastern Cascades, Blue Mountains, and portions of southwestern Oregon. This suggests the species historically had access to extensive, well-connected habitat.
+
+**Current Period (bottom map):** The model shows a significant contraction in suitable habitat quality. Much of the previously suitable range now shows reduced suitability or has become unsuitable altogether, potentially explaining the species' documented population decline.
+
+This pattern aligns with known conservation concerns for Western bumblebees, which have experienced severe population declines across their range since the late 1990s.
+
+### Methods Details
+
+**Occurrence Data:** We used spatially filtered occurrence records within IUCN range boundaries, split into pre-1998 and post-1998 datasets based on the documented population decline timing.
+
+**Environmental Variables:** WorldClim v2.1 bioclimatic variables at 2.5-minute resolution provided climate data for model training.
+
+**Modeling Algorithm:** MaxEnt modeling via the **maxnet** package, using presence-background data with pseudo-absence points generated within the species' geographic extent.
+
+**Spatial Analysis:** All spatial operations conducted using **terra** and **raster** packages in R, with **geodata** for administrative boundaries.
+
+### Key References
+
+- **Xerces Society.** (2015). Western bumble bee (*Bombus occidentalis*): Species profile and conservation status review.
+- **Phillips, S. J., et al.** (2006). Maximum entropy modeling of species geographic distributions. *Ecological Modelling*, 190(3-4), 231-259.
+- **Fick, S. E., & Hijmans, R. J.** (2017). WorldClim 2: New 1km spatial resolution climate surfaces for global land areas. *International Journal of Climatology*, 37(12), 4302-4315.
+
+---
+
+## North America: Western Bumblebee Habitat Before and After Population Decline
 <img src="https://github.com/WhitneyMaxfield/Bumblebee_SDM/blob/main/Figures/Pre%20and%20Post%201998%20Occidentalis/North_America_suitability.jpeg" width="500">
 
 ### Methods Summary
