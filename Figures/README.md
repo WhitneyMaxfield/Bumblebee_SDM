@@ -1,7 +1,5 @@
-## Historical vs. Current Habitat Suitability Analysis
-
-![Habitat Suitability Analysis](/Users/whitneymaxfield/Desktop/Git_attempt_SDM/Bumblebee_SDM/Figures/Pre and Post 1998 Occidentalis/North_America_suitability.jpeg)
-
+## North American Historical vs. Current Habitat Suitability Analysis
+![North American Image](North_America_suitability.jpeg)
 ### Methods Summary
 
 Historical and current habitat suitability for *Bombus occidentalis* were analyzed by integrating presence point data with predicted suitability rasters using the **terra** package (Hijmans, 2023). Presence records were loaded as spatial vectors and aligned with their corresponding raster CRS to accurately extract predicted suitability values at known occurrence locations.
@@ -11,9 +9,7 @@ Suitability thresholds were calculated as the 10th percentile of suitability val
 To enable fair spatial comparisons, the raster extents were intersected to define a common geographic extent, over which suitable habitat area was quantified using cell-specific area calculations (km²), accounting for spatial resolution and projection. Suitable habitat outside this overlapping extent was also evaluated to capture potential range shifts. Visualization of binarized suitability was performed using **ggplot2** to clearly illustrate spatial changes in habitat suitability between the two time periods (Wickham, 2020).
 
 ### Key Findings
-- Binary habitat maps reveal areas of suitable vs. unsuitable habitat for both time periods
-- Spatial extent standardization enables direct comparison of habitat changes
-- 10th percentile threshold balances sensitivity and specificity in habitat predictions
+- ADD HERE 
 
 ### References
 - **Hijmans, R. J.** (2023). *terra: Spatial Data Analysis* (R package version 1.8-61) [Computer software]. https://github.com/rspatial/terra
@@ -21,6 +17,3 @@ To enable fair spatial comparisons, the raster extents were intersected to defin
 - **Pearson, R. G., Raxworthy, C. J., Nakamura, M., & Townsend Peterson, A.** (2006). Predicting species distributions from small numbers of occurrence records: A test case using cryptic geckos in Madagascar. *Journal of Biogeography, 34*(1), 102–117. https://doi.org/10.1111/j.1365-2699.2006.01594.x
 - **Wickham, H.** (2020). *ggplot2: Elegant graphics for data analysis*. Springer-Verlag New York. https://ggplot2.tidyverse.org
 
----
-
-*For detailed methodology and code implementation, see [docs/methods/habitat_suitability_analysis.md](./docs/methods/habitat_suitability_analysis.md)*
