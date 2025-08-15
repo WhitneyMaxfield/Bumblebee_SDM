@@ -10,7 +10,7 @@ This tutorial demonstrates species distribution modeling (SDM) for *Bombus occid
    Occurrence data for *B. occidentalis* were combined with background points generated within the species’ geographic extent.
 
 2. **Environmental Variables**  
-   Bioclimatic variables from **WorldClim v2.1** (Fick & Hijmans, 2017) were processed using the `raster` and **terra** packages (Hijmans, 2023) to crop to the study region and extract environmental values at occurrence and background locations.
+   Bioclimatic variables from **WorldClim v2.1** (Fick & Hijmans, 2017) were processed using the **raster** and **terra** packages (Hijmans, 2023) to crop to the study region and extract environmental values at occurrence and background locations.
 
 3. **Modeling**  
    Habitat suitability was estimated using the Maxent algorithm via the **maxnet** package (Phillips et al., 2010; Breiner et al., 2018) with presence-background data.
