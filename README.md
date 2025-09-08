@@ -24,7 +24,10 @@ This project aims to improve our understanding of habitat suitability and popula
 * __QGIS__ for map production and spatial visualization
 
 ### Contact
-For questions or collaboration inquiries, feel free to reach out via GitHub or contact Whitney.maxfield3@gmail.com 
+For questions or collaboration inquiries, feel free to reach out via GitHub or contact Whitney.maxfield3@gmail.com
+
+### Citation Information 
+[![DOI](https://zenodo.org/badge/1025091160.svg)](https://doi.org/10.5281/zenodo.17081289)
 
 ### Disclaimer 
 All survey, data collection, and research was conducted in accordance to all applicable permits. Data represented here does not imply public access to any lands. 
